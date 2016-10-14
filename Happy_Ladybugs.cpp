@@ -6,21 +6,6 @@
 #include<string>
 using namespace std;
 
-string makeHappy(char b[], int n, int _Count){
-    bool flag = true;
-    int pos = 0;
-    for(int pos = 1; pos < n - 1; pos += 2){
-        if(b[pos] != '_')
-            if(b[pos] != b[pos-1] && b[pos] != b[pos+1]){
-                flag = false;
-                break;
-            }
-    }
-    if(flag) return "YES";
-    //swap(b[pos], b[find(b,b + n, '_' )]);
-    if(_Count == 0) return "NO";
-    else return "YES";
-}
 int main(){
     int g;
     cin >> g;
@@ -52,7 +37,19 @@ int main(){
                 }
             }
             if(flag) continue;
-            cout<<makeHappy(b, n, _Count)<<endl;
+            if(_Count > 0){
+                cout<<"YES"<<endl;
+                continue;
+            }
+            for(int pos = 1; pos < n - 1; pos += 2){
+                if(b[pos] != '_')
+                    if(b[pos] != b[pos-1] && b[pos] != b[pos+1]){
+                        flag = true;
+                        break;
+                    }
+            }
+            if(!flag) cout<<"YES"<<endl;
+            else cout<<"NO"<<endl;
         }
     }    
     return 0;
