@@ -19,10 +19,10 @@ int main(){
         int _Count = count(b, b + n, '_');
         if(_Count == n) cout<<"YES"<<endl;
         else{
-            vector<int> colCount(26);
+            vector<int> colCount(28);
             int color = 0;
             for(vector<int>::iterator itr = colCount.begin(); itr != colCount.end(); ++itr){
-                colCount[*itr] = count(b, b + n, (char)(color + 65));
+                colCount[*itr] = count(b, b + n, (char)(color + 64));
                 ++color;
                 if(colCount[*itr] == 1){
                     cout<<"NO"<<endl;
